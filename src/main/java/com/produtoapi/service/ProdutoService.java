@@ -44,4 +44,64 @@ public class ProdutoService {
 	public List<Produto> salvarLista(List<Produto> produtos) {
 		return produtoRepository.saveAll(produtos);
 	}
+	
+	// ======================================
+	// ==== BUSCAS DETALHADAS POR NOME   ====
+	// ======================================
+	
+	public List<Produto> findByNome(String nome) {
+		return produtoRepository.findByNome(nome);
+	}
+	
+	public List<Produto> findByNomeContaining(String nome) {
+		return produtoRepository.findByNomeContaining(nome);
+	}
+	
+	public List<Produto> findByNomeAndStatus(String nome, String status) {
+		return produtoRepository.findByNomeAndStatus(nome, status);
+	}
+	
+	public List<Produto> findByNomeStartingWith(String prefix) {
+		return produtoRepository.findByNomeStartingWith(prefix);
+	}
+	
+	public List<Produto> findByNomeEndingWith(String suffix) {
+		return produtoRepository.findByNomeEndingWith(suffix);
+	}
+	
+	// ======================================
+	// ==== BUSCAS DETALHADAS POR PREÇO  ====
+	// ======================================
+	
+	public List<Produto> findByPreco(Double preco) {
+		return produtoRepository.findByPreco(preco);
+	}
+	
+	public List<Produto> findByPrecoGreaterThan(Double preco) {
+		return produtoRepository.findByPrecoGreaterThan(preco);
+	}
+	
+	public List<Produto> findByPrecoLessThan(Double preco) {
+		return produtoRepository.findByPrecoLessThan(preco);
+	}
+	
+	public Double buscarTotalPreco() {
+		return produtoRepository.findTotalPreco();
+	}
+	
+	// ===========================================
+	// ==== BUSCAS DETALHADAS POR QUANTIDADE  ====
+	// ===========================================
+	
+	public List<Produto> findByQuantidade(Integer quantidade) {
+		return produtoRepository.findByQuantidade(quantidade);
+	}
+	
+	public List<Produto> findByQuantidadeLessThan(Integer quantidade) {
+		return produtoRepository.findByQuantidadeLessThan(quantidade);
+	}
+	
+	public List<Produto> findByQuantidadeGreaterThan(Integer quantidade) {
+		return produtoRepository.findByQuantidadeGreaterThan(quantidade);
+	}
 }

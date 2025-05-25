@@ -45,4 +45,76 @@ public class ProdutoController {
 	public List<Produto> salvarLista(@RequestBody List<Produto> produtos) {
 		return produtoService.salvarLista(produtos);
 	}
+	
+	// ======================================
+	// ==== BUSCAS DETALHADAS POR NOME   ====
+	// ======================================
+	
+	@GetMapping("/buscarPorNome")
+	public List<Produto> buscarPorNome(@RequestParam String nome) {
+		return produtoService.findByNome(nome);
+	}
+	
+	@GetMapping("/buscarPorNomeContendo")
+	public List<Produto> buscarPorNomeContendo(@RequestParam String nome) {
+		return produtoService.findByNomeContaining(nome);
+	}
+	
+	@GetMapping("/buscarPorNomeEStatus")
+	public List<Produto> buscarPorNomeEStatus(@RequestParam String nome, @RequestParam String status) {
+		return produtoService.findByNomeAndStatus(nome, status);
+	}
+	
+	@GetMapping("/buscarPorNomeComecandoCom")
+	public List<Produto> buscarPorNomeComecandoCom(@RequestParam String valor) {
+		return produtoService.findByNomeStartingWith(valor);
+	}
+	
+	@GetMapping("/buscarPorNomeTerminandoCom")
+	public List<Produto> buscarPorNomeTerminandoCom(@RequestParam String valor) {
+		return produtoService.findByNomeEndingWith(valor);
+	}
+	
+	// ======================================
+	// ==== BUSCAS DETALHADAS POR PREÇO  ====
+	// ======================================
+	
+	@GetMapping("/buscarPorPreco")
+	public List<Produto> buscarPorPreco(@RequestParam Double preco) {
+		return produtoService.findByPreco(preco);
+	}
+	
+	@GetMapping("/buscarPorPrecoMaiorQue")
+	public List<Produto> buscarPorPrecoMaiorQue(@RequestParam Double preco) {
+		return produtoService.findByPrecoGreaterThan(preco);
+	}
+	
+	@GetMapping("/buscarPorPrecoMenorQue")
+	public List<Produto> buscarPorPrecoMenorQue(@RequestParam Double preco) {
+		return produtoService.findByPrecoLessThan(preco);
+	}
+	
+	@GetMapping("/buscarTotalPreco")
+	public Double buscarTotalPreco() {
+		return produtoService.buscarTotalPreco();
+	}
+	
+	// ===========================================
+	// ==== BUSCAS DETALHADAS POR QUANTIDADE  ====
+	// ===========================================
+	
+	@GetMapping("/buscarPorQuantidade")
+	public List<Produto> buscarPorQuantidade(@RequestParam Integer quantidade) {
+		return produtoService.findByQuantidade(quantidade);
+	}
+	
+	@GetMapping("/buscarPorQuantidadeMenorQue")
+	public List<Produto> buscarPorQuantidadeMenorQue(@RequestParam Integer quantidade) {
+		return produtoService.findByQuantidadeLessThan(quantidade);
+	}
+	
+	@GetMapping("/buscarPorQuantidadeMaiorQue")
+	public List<Produto> buscarPorQuantidadeMaiorQue(@RequestParam Integer quantidade) {
+		return produtoService.findByQuantidadeGreaterThan(quantidade);
+	}
 }
