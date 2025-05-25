@@ -9,6 +9,7 @@ import com.produtoapi.service.ProdutoService;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/produtos")
 public class ProdutoController {
@@ -38,5 +39,10 @@ public class ProdutoController {
 	@GetMapping("/{id}")
 	public Optional<Produto> findById(@PathVariable Long id) {
 		return produtoService.findById(id);
+	}
+	
+	@PostMapping("/salvarLista")
+	public List<Produto> salvarLista(@RequestBody List<Produto> produtos) {
+		return produtoService.salvarLista(produtos);
 	}
 }
